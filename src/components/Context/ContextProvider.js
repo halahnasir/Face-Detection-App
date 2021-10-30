@@ -11,6 +11,7 @@ const ContextProvider = (props) => {
 
     const [input, setInput] = useState('');
     const [imageUrl, setImageUrl] = useState('')
+    const [box, setBox] = useState({})
     
     const handleChange = (e) => {
         setInput(e.target.value)
@@ -22,13 +23,27 @@ const ContextProvider = (props) => {
         //setInput('')
         setImageUrl(input)
         app.models.predict(Clarifai.FACE_DETECT_MODEL, input)
-        .then(
-            function(response) {
-            console.log(response.outputs[0].data.regions[0].region_info.bounding_box)
-            },
-            function(err){
-            }
-            )
+        .then(response => displayFaceBox(calculateFaceLocation(response)))
+        .catch(err => console.log(err))
+    }
+
+    const calculateFaceLocation = (data) => {
+        const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
+        const image = document.getElementById('inputImage');
+        const width = Number(image.width);
+        const height = Number(image.height);
+        console.log(width, height);
+        return {
+            leftCol: clarifaiFace.left_col * width,
+            topRow: clarifaiFace.top_row * height,
+            rightCol: width - (clarifaiFace.right_col * width),
+            bottomRow: height - (clarifaiFace.bottom_row * height)
+        }
+    }
+
+    const displayFaceBox = (box) => {
+        setBox(box)
+        console.log(box);
     }
 
     const values = {
@@ -37,7 +52,8 @@ const ContextProvider = (props) => {
         imageUrl,
         setImageUrl,
         handleChange,
-        handleClick
+        handleClick,
+        box
     }
 
     return (

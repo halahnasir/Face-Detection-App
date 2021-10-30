@@ -1,11 +1,6 @@
 import React, {useContext} from 'react'
 import '../../styles/ImageLinkForm.css'
 import {Context} from '../Context/ContextProvider'
-// import Clarifai from 'clarifai'
-
-// const app = new Clarifai.App({
-//     apiKey: '9e251d6c56a741b3a4ed07ceda8dd84e'
-// })
 
 const ImageLinkForm = () => {
 

@@ -19,8 +19,7 @@ const ContextProvider = (props) => {
     
     const handleClick = (e) => {
         e.preventDefault()
-        // console.log(input)
-        setInput('')
+        // setInput('')
         setImageUrl(input)
         app.models.predict(Clarifai.FACE_DETECT_MODEL, input)
         .then(response => displayFaceBox(calculateFaceLocation(response)))

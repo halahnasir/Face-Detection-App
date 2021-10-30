@@ -6,7 +6,7 @@ const Logo = () => {
     return (
         <div className = 'ma4 mt0'>
             <Tilt className = ' Tilt'>
-                <img classsName = 'logo' src = {logoImage} alt = 'logo' height = '100px' width = '100px'/>
+                <img className = 'logo' src = {logoImage} alt = 'logo' height = '100px' width = '100px'/>
             </Tilt>
          </div>
     )

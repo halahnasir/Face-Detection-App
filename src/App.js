@@ -2,6 +2,7 @@ import './App.css';
 import React, {useState} from 'react'
 import Navigation from './components/Navigation/Navigation'
 import Signin from './components/Signin/Signin'
+import Register from './components/Register/Register';
 import Logo from './components/Logo/Logo'
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
 import Rank from './components/Rank/Rank'
@@ -14,6 +15,7 @@ import 'tachyons'
 function App() {
 
   const [route, setRoute] = useState('signin')
+  const [isSignedIn, setIsSignedIn] = useState(false)
 
   const particlesOptions = {
     particles: {
@@ -28,6 +30,13 @@ function App() {
   }
 
   const handleRouteChange = (route) => {
+    if(route === 'signout'){
+      setIsSignedIn(false)
+    }
+    else if(route === 'home')
+    {
+      setIsSignedIn(true)
+    }
     setRoute(route)
   }
 
@@ -36,17 +45,26 @@ function App() {
       <div className="App">
           <Particles className = 'particles'
           params = {particlesOptions} />
-          {route === 'signin' 
+         <Navigation onRouteChange = {handleRouteChange} isSignedIn = {isSignedIn}/>
+          {route === 'home' 
           ? 
-          <Signin onRouteChange = {handleRouteChange}/> 
-          :  
           <div>
-          <Navigation onRouteChange = {handleRouteChange}/>
-          <Logo/>
-          <Rank/>
-          <ImageLinkForm/>
-          <FacialRecognition/>
-          </div>}
+             
+              
+              <Logo/>
+              <Rank/>
+              <ImageLinkForm/>
+              <FacialRecognition/>
+          </div>
+          : 
+          (
+            route === 'signin'
+            ?
+            <Signin onRouteChange = {handleRouteChange}/> 
+            :
+            <Register onRouteChange = {handleRouteChange}/>
+          ) 
+          }
       </div>
     </ContextProvider>
   );

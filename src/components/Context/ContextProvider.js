@@ -12,7 +12,7 @@ const ContextProvider = (props) => {
     const [input, setInput] = useState('');
     const [imageUrl, setImageUrl] = useState('')
     const [box, setBox] = useState({})
-    
+
     const handleChange = (e) => {
         setInput(e.target.value)
     }
@@ -46,6 +46,7 @@ const ContextProvider = (props) => {
         console.log(box);
     }
 
+
     const values = {
         input,
         setInput,
@@ -53,7 +54,7 @@ const ContextProvider = (props) => {
         setImageUrl,
         handleChange,
         handleClick,
-        box
+        box, 
     }
 
     return (

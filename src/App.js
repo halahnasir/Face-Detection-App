@@ -1,6 +1,7 @@
 import './App.css';
-import React from 'react'
+import React, {useState} from 'react'
 import Navigation from './components/Navigation/Navigation'
+import Signin from './components/Signin/Signin'
 import Logo from './components/Logo/Logo'
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
 import Rank from './components/Rank/Rank'
@@ -11,6 +12,8 @@ import Particles from 'react-particles-js'
 import 'tachyons'
 
 function App() {
+
+  const [route, setRoute] = useState('signin')
 
   const particlesOptions = {
     particles: {
@@ -24,16 +27,26 @@ function App() {
     }
   }
 
+  const handleRouteChange = (route) => {
+    setRoute(route)
+  }
+
   return (
     <ContextProvider>
       <div className="App">
           <Particles className = 'particles'
           params = {particlesOptions} />
-          <Navigation/>
+          {route === 'signin' 
+          ? 
+          <Signin onRouteChange = {handleRouteChange}/> 
+          :  
+          <div>
+          <Navigation onRouteChange = {handleRouteChange}/>
           <Logo/>
           <Rank/>
           <ImageLinkForm/>
-          <FacialRecognition/> 
+          <FacialRecognition/>
+          </div>}
       </div>
     </ContextProvider>
   );

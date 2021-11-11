@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Navigation from './components/Navigation/Navigation'
 import Signin from './components/Signin/Signin'
 import Register from './components/Register/Register';
@@ -16,6 +16,12 @@ function App() {
 
   const [route, setRoute] = useState('signin')
   const [isSignedIn, setIsSignedIn] = useState(false)
+
+  useEffect(() => {
+    fetch('http://localhost:5000')
+    .then(res => res.json())
+    .then(data => console.log(data))
+  }, [])
 
   const particlesOptions = {
     particles: {

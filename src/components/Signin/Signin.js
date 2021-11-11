@@ -1,6 +1,23 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 const Signin = ({onRouteChange}) => {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const onEmailChange = (e) => {
+        setEmail(e.target.value)
+    }
+
+    const onPasswordChange = (e) => {
+        setPassword(e.target.value);
+    }
+
+    const onSubmitSignIn = () => {
+        console.log(email, password);
+        onRouteChange('home')
+    }
+
     return (
         <article className="br3 ba dark-gray b--black-10 mv6 shadow-5 w-100 w-50-m w-25-l pt3 mv6 center">
             <div className="pa4 black-80">
@@ -10,19 +27,23 @@ const Signin = ({onRouteChange}) => {
                         <div className ="mt3">
                             <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
                             <input className="pa2 input-reset ba 
-                            b--black bg-transparent hover-bg-dark-pink hover-white w-100" type="email" name="email-address"  id="email-address"/>
+                            b--black bg-transparent hover-bg-dark-pink hover-white w-100" type="email" name="email-address"  id="email-address"
+                            value = {email}
+                            onChange = {onEmailChange}/>
                         </div>
                         <div className="mv3">
                             <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
                             <input className="b pa2 input-reset ba 
-                            b--black bg-transparent hover-bg-dark-pink hover-white w-100" type="password" name="password"  id="password"/>
+                            b--black bg-transparent hover-bg-dark-pink hover-white w-100" type="password" name="password"  id="password" 
+                            value = {password}
+                            onChange = {onPasswordChange}/>
                         </div>
                     </fieldset>
                     <div className="center">
                         <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib center" 
                         type="submit" 
                         value="Sign in"
-                        onClick = {() => onRouteChange('home')}
+                        onClick = {onSubmitSignIn}
                         />
                     </div>
                     <div className="lh-copy mt3">

@@ -26,15 +26,19 @@ const Signin = ({onRouteChange}) => {
                         <legend className="f4 fw6 ph0 mh0 center">Sign In</legend>
                         <div className ="mt3">
                             <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
-                            <input className="pa2 input-reset ba 
-                            b--black bg-transparent hover-bg-dark-pink hover-white w-100" type="email" name="email-address"  id="email-address"
+                            <input className="pa2 input-reset ba b--black bg-transparent hover-bg-dark-pink hover-white w-100" 
+                            type="email" 
+                            name="email-address" 
+                            id="email-address"
                             value = {email}
                             onChange = {onEmailChange}/>
                         </div>
                         <div className="mv3">
                             <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
-                            <input className="b pa2 input-reset ba 
-                            b--black bg-transparent hover-bg-dark-pink hover-white w-100" type="password" name="password"  id="password" 
+                            <input className="b pa2 input-reset ba b--black bg-transparent hover-bg-dark-pink hover-white w-100" 
+                            type="password" 
+                            name="password"  
+                            id="password" 
                             value = {password}
                             onChange = {onPasswordChange}/>
                         </div>
@@ -47,7 +51,10 @@ const Signin = ({onRouteChange}) => {
                         />
                     </div>
                     <div className="lh-copy mt3">
-                        <p onClick = {() => onRouteChange('register')} className="center f6 link dim black db pointer">Register</p>
+                        <p onClick = {() => onRouteChange('register')} 
+                        className="center f6 link dim black db pointer">
+                            Register
+                        </p>
                     </div>
                 </div>
             </div>

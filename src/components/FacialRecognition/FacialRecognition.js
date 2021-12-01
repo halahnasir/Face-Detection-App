@@ -1,11 +1,7 @@
-import React, {useContext} from 'react'
-import {Context} from '../Context/ContextProvider'
+import React from 'react'
 import '../../styles/FacialRecognition.css'
 
-const FacialRecognition = () => {
-
-    const {imageUrl} = useContext(Context)
-    const {box} = useContext(Context)
+const FacialRecognition = ({imageUrl, box}) => {
 
     const style = {
         top: box.topRow,
